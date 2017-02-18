@@ -2,6 +2,7 @@ window.onload = initPage;
 
 function initPage() {
 	document.getElementById("username").onblur = checkUsername;
+	document.getElementById("register").disabled = true;
 }
 
 function checkUsername() {
@@ -31,9 +32,13 @@ function showUsernameStatus() {
 			if (request.responseText == "okay") {
 				// if it's okay, no error message to show
 				document.getElementById("username").className = "approved";
+				document.getElementById("register").disabled = false;
 			} else {
 				// if there's a problem, we'll tell the user here
 				document.getElementById("username").className = "denied";
+				document.getElementById("username").focus();
+				document.getElementById("username").select();
+				document.getElementById("register").disabled = true;
 			}
 		}
 	}
