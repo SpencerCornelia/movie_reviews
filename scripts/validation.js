@@ -5,7 +5,9 @@ function initPage() {
 }
 
 function checkUsername() {
-	//get a request object and send it to the serve
+	document.getElementById("username").className = "thinking";
+
+	document.getElementById("status").src = "images/inProcess.png";
 	request = createRequest();
 	
 	if (request == null) { 
@@ -28,8 +30,10 @@ function showUsernameStatus() {
 		if (request.status == 200) {
 			if (request.responseText == "okay") {
 				// if it's okay, no error message to show
+				document.getElementById("username").className = "approved";
 			} else {
 				// if there's a problem, we'll tell the user here
+				document.getElementById("username").className = "denied";
 			}
 		}
 	}

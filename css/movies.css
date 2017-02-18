@@ -30,3 +30,20 @@ select { border: 2px solid #1E3755; width: 224px; }
 textarea { border: 2px solid #1E3755; padding: 0 2px; width: 216px; }
 #register { width: 100px; }
  
+#username {
+  padding: 0 20px 0 2px;
+  width: 198px;
+}
+
+#username.thinking {
+  background: url("../images/inProcess.png");
+}
+
+#username.approved {
+  background: url("../images/okay.png");
+}
+
+#username.denied {
+  background: url("../images/inUse.png");
+}
+
