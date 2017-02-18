@@ -101,6 +101,7 @@ function checkFormStatus() {
 }
 
 function registerUser() {
+	t = setInterval("scrollImages", 50);
 	document.getElementById("register").value == "Processing...";
 	registerRequest = createRequest();
 	if (registerRequest == null) {
@@ -115,5 +116,24 @@ function registerUser() {
 	}
 }
 
+function registrationProcessed() {
+	if (registerRequest.readyState == 4) {
+		if (registerRequest.status == 200) {
+			document.getElementById("wrapper").innerHTML = registerRequest.responseText;
+		}
+	}
+}
+
+function scrollImages() {
+	var coverBarDiv = document.getElementById("coverBar");
+	var images = coverBarDiv.getElementsByTageName("img");
+	for (var i = 0; i < images.length; i++) {
+		var left = images[i].style.left.substr(0, images[i].style.left.length - 2);
+		if (left <= -86) {
+			left = 532;
+		}
+		images[i].style.left = (left - 1) + "px";
+	}
+}
 
 
