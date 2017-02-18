@@ -4,7 +4,9 @@ var passwordValid = false;
 
 function initPage() {
 	document.getElementById("username").onblur = checkUsername;
+	document.getElementById("password2").onblur = checkPassword;
 	document.getElementById("register").disabled = true;
+	document.getElementById("register").onclick = registerUser;
 }
 
 function checkUsername() {
@@ -97,3 +99,21 @@ function checkFormStatus() {
 		document.findElementById("register").disabled = true;
 	}
 }
+
+function registerUser() {
+	document.getElementById("register").value == "Processing...";
+	registerRequest = createRequest();
+	if (registerRequest == null) {
+		//unable to create request
+	} else {
+		var url = "register.php?username=" + 
+			escape(document.getElementById("username").value) + "?password=" +
+			escape(document.getElementById("password1").value);
+		registerRequest.onreadystatechange = registrationProcessed;
+		registerRequest.open("GET", url, true);
+		registerRequest.send(null);
+	}
+}
+
+
+
